@@ -1,6 +1,3 @@
-import java.util.HashSet;
-import java.util.Set;
-
 public class Single_Number {
     public static int singleNumber(int[] nums) {
         int res  = 0;
