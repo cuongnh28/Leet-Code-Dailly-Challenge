@@ -5,3 +5,5 @@ O
 0src/Find_Numbers_with_Even_Number_of_Digits.java,c/1/c162bbe968a752ec716ea69e7190733106f6464f
 N
 src/ReverseWordsInAString.java,a/7/a753a978ba00026a8e49a42bedafcf321cee8cfc
+J
+src/StringCompression.java,f/3/f39c049c53f9bfa043c435c266eb83fe8f144d5c
