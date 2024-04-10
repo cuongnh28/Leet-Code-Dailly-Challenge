@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Max_number_of_k_sum_pairs {
     public static void main(String[] args) {
-        int[] nums = {2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2};
-        int k = 3;
+//        int[] nums = {2, 5, 4, 4, 1, 3, 4, 4, 1, 4, 4, 1, 2, 1, 2, 2, 3, 2, 4, 2};
+//        int k = 3;
 //        int[] nums = {1,2,3,4};
 //        int k = 5;
-//        int[] nums = {3, 1, 3, 4, 3, 3};
-//        int k = 6;
+        int[] nums = {3, 1, 3, 4, 3};
+        int k = 6;
 //        int[] nums = {
 //                63, 10, 28, 31, 90, 53, 75, 77, 72, 47, 45, 6, 49, 13, 77, 61, 68, 43, 33, 1, 14, 62, 55, 55, 38,
 //                54, 8, 79, 89, 14, 50, 68, 85, 12, 42, 57, 4, 67, 75, 6, 71, 8, 61, 26, 11, 20, 22, 3, 70, 52, 82,
@@ -26,22 +26,44 @@ public class Max_number_of_k_sum_pairs {
     }
 
     public static int maxOperations(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
         int res = 0;
-
-        for (int num : nums) {
-            int comp = k - num;
-            if (map.containsKey(comp)) {
+        nums = Arrays.stream(nums).sorted().toArray();
+        int i = 0;
+        int j = nums.length - 1;
+        while (i < j) {
+            if (nums[i] + nums[j] == k) {
                 res++;
-                if (map.get(comp) == 1) {
-                    map.remove(comp);
-                } else {
-                    map.put(comp, map.get(comp) - 1);
-                }
-            } else {
-                map.put(num, map.getOrDefault(num, 0) + 1);
+                i++;
+                j--;
+            }
+            else if (nums[i] + nums[j] > k) {
+                j--;
+            }
+            else {
+                i++;
             }
         }
         return res;
     }
+
+//    Cach 1.
+//    public static int maxOperations(int[] nums, int k) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        int res = 0;
+//
+//        for (int num : nums) {
+//            int comp = k - num;
+//            if (map.containsKey(comp)) {
+//                res++;
+//                if (map.get(comp) == 1) {
+//                    map.remove(comp);
+//                } else {
+//                    map.put(comp, map.get(comp) - 1);
+//                }
+//            } else {
+//                map.put(num, map.getOrDefault(num, 0) + 1);
+//            }
+//        }
+//        return res;
+//    }
 }
